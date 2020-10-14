@@ -51,7 +51,8 @@ distanciaPuntos (x1,y1) (x2,y2) = sqrt((x2-x1)^2 + (y2-y1)^2)
 
 {- 8. Pendiente de la recta que pasa por dos puntos. La función debe calcular la pendiente de la recta que
 pasa por los puntos (x 1 , y 1 ) y (x 2 , y 2 ). -}
---pendienteRecta :: (Float,Float) -> (Float,Float) -> Float
+pendienteRecta :: (Float,Float) -> (Float,Float) -> Float
+pendienteRecta (x1,y1) (x2,y2) = (y2-y1)/(x2-x1)
 
 {- 9. Raices de una ecuación cuadratica. La función recibe como parámetros tres valores de tipo Float a, b y
 c que representan a la ecuación ax 2 + bx + c = 0. El resultado debe ser una tupla con las dos raices. Cada raı́z
