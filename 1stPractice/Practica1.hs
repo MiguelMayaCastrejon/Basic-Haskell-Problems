@@ -25,8 +25,12 @@ normaVectorial (x, y) = sqrt(x^2 + y^2) --En la terminal ingresar los valores co
 
 {- 4. Comparador. La función recibe dos números tipo Float a y b. La función debe devolver 0 si los a es igual
 a b, 1 si a es mayor a b y −1 si a es menor a b. -}
---comparador :: Float -> Float -> Int
-
+comparador :: Float -> Float -> Int
+comparador a b = if a == b
+                    then 0
+                    else if a>b 
+                        then 1
+                        else -1
 {- 5. Suma de fracciones. La función recibe dos tuplas que representa a las fracciones a/b y c/d. La función debe
 devolver una tupla con el resultado de sumar las fracciones que recibe comó parámetros. -}
 --sumaFraciones :: (Int,Int) -> (Int,Int) -> (Int,Int)
@@ -53,4 +57,3 @@ debe ser 0. -}
 n. El parámetro l representa es el tamaño de los lados de la pirámide, h es la altura y n es el número de lados
 de la base. La función debe calcular de volumen de la piramide representada por los parámetros l, h y n. -}
 --volumenPiramidal :: Float -> Float -> Float -> Float
-
