@@ -31,9 +31,13 @@ comparador a b = if a == b
                     else if a>b 
                         then 1
                         else -1
+
 {- 5. Suma de fracciones. La función recibe dos tuplas que representa a las fracciones a/b y c/d. La función debe
 devolver una tupla con el resultado de sumar las fracciones que recibe comó parámetros. -}
---sumaFraciones :: (Int,Int) -> (Int,Int) -> (Int,Int)
+sumaFraciones :: (Int,Int) -> (Int,Int) -> (Int,Int)
+sumaFraciones (a,b) (c,d) = if b==d 
+                                then ((a+c),b) 
+                                else ((d*a + b*c), b*d) 
 
 {- 6. Producto punto en el plano. La Función debe calcular el producto punto entre los vectores (x 1 , y 1 ) y
 (x 2 , y 2 ). -}
