@@ -41,7 +41,8 @@ sumaFraciones (a,b) (c,d) = if b==d
 
 {- 6. Producto punto en el plano. La Función debe calcular el producto punto entre los vectores (x 1 , y 1 ) y
 (x 2 , y 2 ). -}
---productoPunto :: (Float,Float) -> (Float,Float) -> Float
+productoPunto :: (Float,Float) -> (Float,Float) -> Float
+productoPunto (x1,y1) (x2,y2) = x1*x2 + y1*y2
 
 {- 7. Función distancia entre dos puntos en el plano. La función debe calcular la distancia entre los puntos
 (x 1 , y 1 ) y (x 2 , y 2 ). -}
