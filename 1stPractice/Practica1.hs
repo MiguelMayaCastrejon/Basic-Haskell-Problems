@@ -18,8 +18,10 @@ calcular calcular la evaluación de valor v en la ecuación ax 2 + bx + c sustit
 hipotenusa :: Float -> Float -> Float
 hipotenusa b h  = sqrt(b^2 + h^2 )
 
-{- 3. Norma de un vector en el plano. La función debe calcular la norma del vector (x, y). -}
---normaVectorial :: (Float,Float) -> Float
+{- 3. Norma (longitud, medida) de un vector en el plano. La función debe calcular la (longitud, medida) norma del vector (x, y). -}
+normaVectorial :: (Float,Float) -> Float
+normaVectorial (x, y) = sqrt(x^2 + y^2) --En la terminal ingresar los valores como esta en la firma.
+
 
 {- 4. Comparador. La función recibe dos números tipo Float a y b. La función debe devolver 0 si los a es igual
 a b, 1 si a es mayor a b y −1 si a es menor a b. -}
