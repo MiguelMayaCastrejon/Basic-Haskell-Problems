@@ -46,7 +46,8 @@ productoPunto (x1,y1) (x2,y2) = x1*x2 + y1*y2
 
 {- 7. Función distancia entre dos puntos en el plano. La función debe calcular la distancia entre los puntos
 (x 1 , y 1 ) y (x 2 , y 2 ). -}
---distanciaPuntos :: (Float,Float) -> (Float,Float) -> Float
+distanciaPuntos :: (Float,Float) -> (Float,Float) -> Float
+distanciaPuntos (x1,y1) (x2,y2) = sqrt((x2-x1)^2 + (y2-y1)^2)
 
 {- 8. Pendiente de la recta que pasa por dos puntos. La función debe calcular la pendiente de la recta que
 pasa por los puntos (x 1 , y 1 ) y (x 2 , y 2 ). -}
