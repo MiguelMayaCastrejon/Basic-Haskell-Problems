@@ -58,7 +58,14 @@ pendienteRecta (x1,y1) (x2,y2) = (y2-y1)/(x2-x1)
 c que representan a la ecuación ax 2 + bx + c = 0. El resultado debe ser una tupla con las dos raices. Cada raı́z
 es una tupla que representa a un número complejo. Si la ráiz no tiene parte imaginaria, la segunda entrada
 debe ser 0. -}
---raicesCuadraticas :: Float -> Float -> Float -> ((Float,Float),(Float,Float))
+
+raicesCuadraticas :: Float -> Float -> Float -> ((Float,Float), (Float, Float))
+raicesCuadraticas a b c 
+                | d >= 0  = ( ((-b + d)/ t, (0) ), ((-b - d)/ t, (0) ))
+                | otherwise = ( ( (-b)/t ,sqrt((negate (b^2-4*a*c)))/t ) , ( (-b)/t , - sqrt((negate (b^2-4*a*c)))/t )  )
+                where
+                    d = sqrt(b^2 -4*a*c)
+                    t = 2*a
 
 {- 10. Volumen de una pirámide regular. La función recibe como parámetros tres valores de tipo Float l, h y
 n. El parámetro l representa es el tamaño de los lados de la pirámide, h es la altura y n es el número de lados
