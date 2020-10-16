@@ -2,17 +2,17 @@
 Estructuras discretas 2021-1
 Práctica 1 Básicos del lenguaje de programación Haskell.
 Profesor: Alejandro Hernández Mora alejandrohmora@ciencias.unam.mx 
-Ayudante: Pablo Camacho González pablopcg1@ciencias.unam.mx | Adrián Felipe Vélez Rivera adrianf_velez@ciencias.unam.mx |
-Edith Araceli Reyes López
-Ayudante de laboratorio: Luis Manuel Martínez Damaso	LuisManuel@ciencias.unam.mx 
-Alumnos: Joel Miguel Maya Castrejón  
+Ayudantes: Pablo Camacho González pablopcg1@ciencias.unam.mx | Adrián Felipe Vélez Rivera adrianf_velez@ciencias.unam.mx
+Ayudantes de laboratorio: Luis Manuel Martínez Damaso	LuisManuel@ciencias.unam.mx | Edith Araceli Reyes López edithareyesl@ciencias.unam.mx
+Alumnos: Daniela Anaya Solis danielaanayas@ciencias.unam.mx |Mauricio Javier Salas Martinéz maw@ciencias.unam.mx | Joel Miguel Maya Castrejón mike.maya@ciencias.unam.mx
 -}
 
 module Practica1 where 
 
-{-1. Evaluación de una función cuadrática.La función recibe cuatro parámetros a, b, c y v La función debe
-calcular calcular la evaluación de valor v en la ecuación ax 2 + bx + c sustituyendo a x por v.  -}
---evaluacionFuncionCuadratica :: (Float -> Float -> Float -> Float) -> Float
+{-1. Evaluación de una función cuadrática. La función va a recibir 4 parámetros a, b, c, x, donde a, b y c representan a la ecuación
+ax²+bx+c. La x es el valor con el que vamos a evaluar a dicha ecuación. -}
+evaluacionCuadratica :: Float -> Float -> Float -> Float -> Float
+evaluacionCuadratica a b c x = (a * x * x) + (b*x) + c
 
 {- 2. Hipotenusa de un triagulo. La función debe calcular la hipotenusa de un triángulo con base b y altura h. -}
 hipotenusa :: Float -> Float -> Float
@@ -55,7 +55,7 @@ pendienteRecta :: (Float,Float) -> (Float,Float) -> Float
 pendienteRecta (x1,y1) (x2,y2) = (y2-y1)/(x2-x1)
 
 {- 9. Raices de una ecuación cuadratica. La función recibe como parámetros tres valores de tipo Float a, b y
-c que representan a la ecuación ax 2 + bx + c = 0. El resultado debe ser una tupla con las dos raices. Cada raı́z
+c que representan a la ecuación ax^2 + bx + c = 0. El resultado debe ser una tupla con las dos raices. Cada raı́z
 es una tupla que representa a un número complejo. Si la ráiz no tiene parte imaginaria, la segunda entrada
 debe ser 0. -}
 
