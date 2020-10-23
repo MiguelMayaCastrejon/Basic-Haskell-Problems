@@ -70,4 +70,16 @@ raicesCuadraticas a b c
 {- 10. Volumen de una pirámide regular. La función recibe como parámetros tres valores de tipo Float l, h y
 n. El parámetro l representa es el tamaño de los lados de la pirámide, h es la altura y n es el número de lados
 de la base. La función debe calcular de volumen de la piramide representada por los parámetros l, h y n. -}
---volumenPiramidal :: Float -> Float -> Float -> Float
+
+--Funciones auxiliares
+angulo:: Float -> Float
+angulo n = (2 *pi)/n
+
+apotema:: Float -> Float -> Float
+apotema l n = l/(2* tan ((angulo n )/2))
+
+areaPoligono :: Float -> Float -> Float
+areaPoligono l n = (l* n *(apotema l n))/2
+
+volumenPiramidal :: Float -> Float -> Float -> Float
+volumenPiramidal  l h n = (((l* n *(apotema l n))/2) * h)/3
