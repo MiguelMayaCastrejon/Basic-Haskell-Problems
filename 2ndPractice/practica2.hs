@@ -14,6 +14,7 @@ que la función siempre recibirá enteros positivos. -}
 mcd :: Int -> Int -> Int
 mcd a 0 = a
 mcd a b = mcd b (a `mod` b)
+
 {- 2. Mínimo común Múltiplo. La función debe calcular el MCM de dos números enteros positivos.Puedes
 asumir que la función siempre recibirá enteros positivos. -}
 mcm :: Int -> Int -> Int
@@ -30,6 +31,7 @@ longitud (x:xs) = 1 + longitud xs --Caso recursivo
 maximo :: Ord a => [a] -> a
 maximo [x] = x
 maximo (x:y:ys) = max x (maximo (y:ys))
+
 {- 5. Reversa. La función calcula recursivamente la reversa de una lista. -}
 reversa :: [a] -> [a] 
 reversa [] = []
@@ -51,4 +53,6 @@ que siempre vas a recibir matrices válidas para la multiplicación. -}
 --multMatriz ::Num a => [[a]] -> [[a]] -> [[a]]
 
 {- 10. Conjunto potencias. La función debe calcular el conjunto potencia de una lista. -}
---conjuntoPotencia :: [a] -> [[a]]
+conjuntoPotencia :: [a] -> [[a]]
+conjuntoPotencia [] = [[]]
+conjuntoPotencia (x:xs) = [(x:ys) | ys <- conjuntoPotencia xs] ++ conjuntoPotencia xs
