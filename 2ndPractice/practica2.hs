@@ -38,8 +38,8 @@ reversa [] = []
 reversa (x:xs) = reversa xs ++ [x]
 
 {- 6. Palíndromo. La función verifica si una lista es palíndromo. -}
---palindromo :: Eq a => [a] -> Bool
-
+palindromo :: Eq a => [a] -> Bool
+palindromo xs = xs == reverse xs
 {- 7. Divisores. La función devuelve una lista con todos los divisores positivos de un número entero positivo.
 Puedes asumir que la función siempre va a recibir enteros positivos. -}
 --divisores :: Int -> [Int]
