@@ -16,7 +16,10 @@ mcd a 0 = a
 mcd a b = mcd b (a `mod` b)
 {- 2. Mínimo común Múltiplo. La función debe calcular el MCM de dos números enteros positivos.Puedes
 asumir que la función siempre recibirá enteros positivos. -}
---mcm :: Int -> Int -> Int
+mcm :: Int -> Int -> Int
+mcm _ 0 =  0
+mcm 0 _ =  0
+mcm x y =  abs ((x `quot` (mcd x y)) * y)
 
 {- 3. Longitud de una lista. Función recursiva que calcula la longitud de una lista. -}
 longitud :: [a] -> Int
@@ -24,8 +27,9 @@ longitud [] = 0 --Caso Base
 longitud (x:xs) = 1 + longitud xs --Caso recursivo
 
 {- 4. Máximo de una lista. La función devuelve el máximo elemento de una lista de tipo numérico. -}
---maximo :: Num a => [a] -> a
-
+maximo :: Ord a => [a] -> a
+maximo [x] = x
+maximo (x:y:ys) = max x (maximo (y:ys))
 {- 5. Reversa. La función calcula recursivamente la reversa de una lista. -}
 reversa :: [a] -> [a] 
 reversa [] = []
