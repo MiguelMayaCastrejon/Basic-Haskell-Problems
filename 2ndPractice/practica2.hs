@@ -10,11 +10,12 @@ Alumnos: Daniela Anaya Solis danielaanayas@ciencias.unam.mx |Mauricio Javier Sal
 module Practica2 where 
 
 {-1. Máximo común Divisor. La función debe calcular el MCD de dos números enteros positivos.Puedes asumir
-que la función siempre recibirá enteros positivos -}
---mcd :: Int -> Int -> Int
-
+que la función siempre recibirá enteros positivos. -}
+mcd :: Int -> Int -> Int
+mcd a 0 = a
+mcd a b = mcd b (a `mod` b)
 {- 2. Mínimo común Múltiplo. La función debe calcular el MCM de dos números enteros positivos.Puedes
-asumir que la función siempre recibirá enteros positivos -}
+asumir que la función siempre recibirá enteros positivos. -}
 --mcm :: Int -> Int -> Int
 
 {- 3. Longitud de una lista. Función recursiva que calcula la longitud de una lista. -}
