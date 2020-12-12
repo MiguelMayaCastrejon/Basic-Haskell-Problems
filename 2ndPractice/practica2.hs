@@ -39,10 +39,11 @@ reversa (x:xs) = reversa xs ++ [x]
 
 {- 6. Palíndromo. La función verifica si una lista es palíndromo. -}
 palindromo :: Eq a => [a] -> Bool
-palindromo xs = xs == reverse xs
-{- 7. Divisores. La función devuelve una lista con todos los divisores positivos de un número entero positivo.
-Puedes asumir que la función siempre va a recibir enteros positivos. -}
---divisores :: Int -> [Int]
+palindromo xs = xs == reversa xs
+
+{- 7. Divisores. La función devuelve una lista con todos los divisores positivos de un número entero positivo. Puedes asumir que la función siempre va a recibir enteros positivos. -}
+divisores :: Int -> [Int]
+divisores n = concat [[x,-x] | x <- [1..abs n], rem n x == 0]
 
 {- 8. Diferencia Simétrica. La función debe calcular la diferencia simétrica entre dos listas. -}
 --diferenciaSimetrica :: [a] -> [a] -> [a]
