@@ -17,10 +17,15 @@ mcd a b = mcd b (a `mod` b)
 
 {- 2. Mínimo común Múltiplo. La función debe calcular el MCM de dos números enteros positivos.Puedes
 asumir que la función siempre recibirá enteros positivos. -}
+vabs:: Int -> Int
+vabs x = if x < 0 
+            then  (-x)
+            else x
+
 mcm :: Int -> Int -> Int
 mcm _ 0 =  0
 mcm 0 _ =  0
-mcm x y =  abs ((x `quot` (mcd x y)) * y)
+mcm x y =  vabs ((x `quot` (mcd x y)) * y)
 
 {- 3. Longitud de una lista. Función recursiva que calcula la longitud de una lista. -}
 longitud :: [a] -> Int
@@ -28,9 +33,15 @@ longitud [] = 0 --Caso Base
 longitud (x:xs) = 1 + longitud xs --Caso recursivo
 
 {- 4. Máximo de una lista. La función devuelve el máximo elemento de una lista de tipo numérico. -}
+maxAux :: Ord a => a -> [a] -> a
+maxAux x [] = x
+maxAux x (y:ys) = if x < y 
+                    then maxAux y ys
+                    else maxAux x ys
+
 maximo :: Ord a => [a] -> a
 maximo [x] = x
-maximo (x:y:ys) = max x (maximo (y:ys))
+maximo (x:xs) = maxAux x xs
 
 {- 5. Reversa. La función calcula recursivamente la reversa de una lista. -}
 reversa :: [a] -> [a] 
@@ -43,10 +54,13 @@ palindromo xs = xs == reversa xs
 
 {- 7. Divisores. La función devuelve una lista con todos los divisores positivos de un número entero positivo. Puedes asumir que la función siempre va a recibir enteros positivos. -}
 divisores :: Int -> [Int]
-divisores n = concat [[x,-x] | x <- [1..abs n], rem n x == 0]
+divisores n = [x | x <- [1..n], (mod n x) == 0]
 
 {- 8. Diferencia Simétrica. La función debe calcular la diferencia simétrica entre dos listas. -}
---diferenciaSimetrica :: [a] -> [a] -> [a]
+diferenciaSimetrica ::Eq a=> [a] -> [a] -> [a]
+diferenciaSimetrica xs ys =
+    [x | x <- xs, notElem x ys] ++
+    [y | y <- ys, notElem y xs]
 
 {- 9. Multiplicación de matrices. La función debe calcular la multiplicación de las matrices M y N de dimensión
 nxm y mxk respectivamente. Para representar una matriz en Haskell usaremos un lista de listas. Puedes asumir
