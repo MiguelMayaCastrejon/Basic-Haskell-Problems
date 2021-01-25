@@ -30,13 +30,23 @@ negar :: Formula -> Formula
 negar (Prop p) = Neg (Prop p)
 negar (Neg f) = f
 negar ( p :&: q) = (negar p) :|: (negar q)
-negar ( p :|: q) = (negar p) :&: (negar q):
+negar ( p :|: q) = (negar p) :&: (negar q)
 negar ( p :=>: q) = (p) :&: (negar q)
 negar ( p :<=>: q) = ((p) :&: (negar q)) :|: ((q) :&: (negar p))
 
-{- 2. Variables de la fórmula. La funci ́on devuelve una lista con todas las variables de una fórmula. La lista no
+{- 2. Variables de la fórmula. La función devuelve una lista con todas las variables de una fórmula. La lista no
 debe contener repetidos.-}
---variables :: Formula -> [Var]
+variables :: Formula -> [Var]
+variables (Prop p) = [p]
+variables (Neg f) = variables f
+variables ( p :&: q) = variables p `repetidos` variables q
+variables ( p :|: q) = variables p `repetidos` variables q
+variables ( p :=>: q) = variables p `repetidos` variables q
+variables ( p :<=>: q) = variables p `repetidos` variables q
+
+--Funcion auxiliar usada en "variables"
+repetidos :: Eq a => [a] -> [a] -> [a]
+repetidos xs ys = xs ++ [y | y <- ys, y `notElem` xs]
 
 {- 3. Equivalencia. La función recibe una fórmula y devuelve la fórmula equivalente sin condicionales, bicondicio-
 nales y la negación sólo está frente a variables proposicionales. -}
