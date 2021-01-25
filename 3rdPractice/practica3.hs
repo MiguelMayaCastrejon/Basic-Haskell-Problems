@@ -50,14 +50,19 @@ repetidos xs ys = xs ++ [y | y <- ys, y `notElem` xs]
 
 {- 3. Equivalencia. La función recibe una fórmula y devuelve la fórmula equivalente sin condicionales, bicondicio-
 nales y la negación sólo está frente a variables proposicionales. -}
---equivalencia :: Formula -> Formula
+equivalencia :: Formula -> Formula
+equivalencia (Neg(Prop p)) = negar (Prop p)
+equivalencia (Neg (p :&: q)) = (negar p) :|: (negar q)
+equivalencia (Neg (p :|: q)) = (negar p) :&: (negar q)
+equivalencia ( p :=>: q) = negar (p) :|: (q)
+equivalencia ( p :<=>: q) = (negar (p) :|: (q)) :&: (negar (q) :|: (p))
 
 {- 4. Interpretación. La función recibe una fórmula y una lista con parejas formadas por una variable y su valor
 booleano. La función debe devolver la interpretación de la fórmula usando la lista de parejas. Puedes asumir
 que todas las variables tienen su valor en la lista de parejas. -}
 --interpretacion :: Formula -> [(Var,Bool)] -> Bool
 
-{- 5. Tabla de Verdad. La funci ́on calcula la tabla de verdad de una lista de variables.-}
+{- 5. Tabla de Verdad. La función calcula la tabla de verdad de una lista de variables.-}
 --tablaVerdad :: [Var] -> [(Var,Bool)]
 
 {- 6.- Tautología. La función verifica si una fórmula es una tautología. -}
