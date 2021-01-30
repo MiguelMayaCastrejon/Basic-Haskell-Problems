@@ -60,10 +60,27 @@ equivalencia ( p :<=>: q) = (negar (p) :|: (q)) :&: (negar (q) :|: (p))
 {- 4. Interpretación. La función recibe una fórmula y una lista con parejas formadas por una variable y su valor
 booleano. La función debe devolver la interpretación de la fórmula usando la lista de parejas. Puedes asumir
 que todas las variables tienen su valor en la lista de parejas. -}
---interpretacion :: Formula -> [(Var,Bool)] -> Bool
+interpretacion :: Formula -> [(Var,Bool)] -> Bool
+interpretacion (Prop p) xs = valor p xs
+interpretacion (Neg f) xs = negacion (interpretacion f xs)
+interpretacion (f :&: g) xs = (interpretacion f xs) && (interpretacion g xs)
+interpretacion (f :|: g) xs = (interpretacion f xs) || (interpretacion g xs)
+interpretacion (f :=>: g) xs = negacion (interpretacion f xs) || (interpretacion g xs)
+interpretacion (f :<=>: g) xs = (negacion (interpretacion f xs) || interpretacion g xs ) && (negacion (interpretacion g xs) || interpretacion f xs)
+
+--Funcion auxiliar usada en interpretacion
+valor :: Var -> [(Var,Bool )] -> Bool 
+valor a [(x,b)] = b
+valor a ((x,b):xs) = if (a == x)
+                    then b 
+                    else valor a xs
+--Funcion auxiliar usada en interpretacion
+negacion :: Bool -> Bool 
+negacion True = False 
+negacion False = True
 
 {- 5. Tabla de Verdad. La función calcula la tabla de verdad de una lista de variables.-}
---tablaVerdad :: [Var] -> [(Var,Bool)]
+--tablaVerdad :: [Var] -> [[(Var,Bool)]]
 
 {- 6.- Tautología. La función verifica si una fórmula es una tautología. -}
 --tautologia :: Formula -> Bool
