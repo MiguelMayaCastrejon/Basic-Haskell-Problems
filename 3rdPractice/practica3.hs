@@ -80,7 +80,30 @@ negacion True = False
 negacion False = True
 
 {- 5. Tabla de Verdad. La función calcula la tabla de verdad de una lista de variables.-}
---tablaVerdad :: [Var] -> [[(Var,Bool)]]
+
+tablaVerdad :: [Var] -> [[(Var,Bool)]]
+tablaVerdad [] = []
+tablaVerdad (x:xs) = tablaVerdadAux xs [[(x,True)],[(x,False)]]
+
+
+tablaVerdadAux :: [Var] -> [[(Var,Bool)]] -> [[(Var,Bool)]]
+tablaVerdadAux [] xs = xs
+tablaVerdadAux (x:xs) ys = tablaVerdadAux xs ((combV x ys) ++ (combF x ys)) 
+
+combV :: Var -> [[(Var,Bool)]] -> [[(Var,Bool)]]
+combV p [] = []
+combV p (x:xs) = (((p,True):x):(combV p xs))
+
+combF :: Var -> [[(Var,Bool)]] -> [[(Var,Bool)]]
+combF p [] = []
+combF p (x:xs) = (((p,False):x):(combV p xs))
 
 {- 6.- Tautología. La función verifica si una fórmula es una tautología. -}
---tautologia :: Formula -> Bool
+tautologia :: Formula -> Bool
+tautologia f = interTau f (tablaVerdad (variables f))
+
+interTau :: Formula -> [[(Var,Bool)]] -> Bool
+interTau f [] = True
+interTau f (x:xs) = if interpretacion f x
+                    then interTau f xs
+                    else False
